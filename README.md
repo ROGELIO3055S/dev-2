@@ -26,10 +26,10 @@ Plateforme de gestion des requêtes académiques pour l'IUT de Douala. Ce projet
 git clone [https://github.com/Dylane237/iut-requetes-backend.git](https://github.com/Dylane237/iut-requetes-backend.git)
 cd iut-requetes-backend
 
-3. Installation des dépendances
+### 3. Installation des dépendances
 npm install
 
-4. Configuration de la Base de Données
+### 4. Configuration de la Base de Données
 Lancez votre serveur MySQL.
 Importez le fichier init_db.sql dans votre client (MySQL Workbench, phpMyAdmin, etc.).
 Créez un fichier .env à la racine et configurez vos accès :
@@ -42,11 +42,11 @@ DB_NAME=iut_requetes_db
 JWT_SECRET=votre_cle_secrete
 PORT=3000
 
-5. Lancement
+### 5. Lancement
 npm start
 
 
-📅 Planning de Développement (Phase 1)
+### 📅 Planning de Développement (Phase 1)
 [x] T1 (10/04) : Initialisation du dépôt et structure (Lead Backend)
 
 [x] T2 (10/04) : Conception du schéma SQL (En cours)
@@ -55,7 +55,7 @@ npm start
 
 [ ] T4 (12/04) : CRUD des requêtes
 
-👥 Équipe
+### 👥 Équipe
 ...
 
 10 membres (Développeurs Frontend, Backend, UI/UX)
