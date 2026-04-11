@@ -7,9 +7,13 @@ const {
     annulerRequete 
 } = require('../controllers/requeteController');
 const { verifierToken, verifierRole } = require('../middlewares/authMiddleware');
+const { validerErreurNom, validerChangementNote } = require('../middlewares/validationMiddleware');
 
-// POST /requetes — Créer une requête (étudiant seulement)
-router.post('/', verifierToken, verifierRole('etudiant'), creerRequete);
+// POST /requetes/erreur-nom — Créer une requête erreur de nom
+router.post('/erreur-nom', verifierToken, verifierRole('etudiant'), validerErreurNom, creerRequete);
+
+// POST /requetes/changement-note — Créer une requête changement de note
+router.post('/changement-note', verifierToken, verifierRole('etudiant'), validerChangementNote, creerRequete);
 
 // GET /requetes/:id — Voir le détail d'une requête
 router.get('/:id', verifierToken, getRequeteById);
