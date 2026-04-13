@@ -72,9 +72,8 @@ Bash
 npm run dev
 Le serveur sera disponible sur : http://localhost:5000
 
-📖 Documentation API
-Pour le détail technique de chaque route (paramètres, JSON attendus, codes d'erreurs), veuillez vous référer au fichier suivant :
-👉 Consulter API.md
+## Documentation API
+Pour le détail technique de chaque route (paramètres, JSON attendus, codes d'erreurs), veuillez vous référer au fichier API.md
 
-👨‍💻 Auteurs
+## Auteurs
 Dylane & Samuel
