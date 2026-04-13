@@ -43,6 +43,8 @@ Le backend a été conçu avec une architecture robuste pour garantir la sécuri
 ├── seed.js             # Script de génération de données de test (T6)
 ├── server.js           # Point d'entrée de l'application
 └── API.md              # Documentation technique détaillée des routes
+```
+
 ⚙️ Installation et Lancement
 1. Prérequis
 Node.js installé
