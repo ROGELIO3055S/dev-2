@@ -36,13 +36,17 @@ Le backend a été conçu avec une architecture robuste pour garantir la sécuri
 /backend
 ├── config/             # Configuration de la base de données
 ├── controllers/        # Logique métier (requêtes, auth)
-├── middlewares/        # Sécurité (JWT) et validation (T5)
+├── middlewares/        # Sécurité (JWT) et validation
 ├── models/             # Schémas et requêtes SQL
-├── routes/             # Définition des points d'accès API (T4)
-├── utils/              # Fonctions utilitaires
-├── seed.js             # Script de génération de données de test (T6)
-├── server.js           # Point d'entrée de l'application
-└── API.md              # Documentation technique détaillée des routes
+├── routes/             # Définition des points d'accès API
+├── .gitignore          # Fichiers à ignorer par Git
+├── API.md              # Documentation technique des routes
+├── README.md           # Présentation générale du projet
+├── init_db.sql         # Script SQL de création des tables
+├── package-lock.json   # Verrouillage des versions des dépendances
+├── package.json        # Dépendances et scripts du projet
+├── seed.js             # Générateur de données de test
+└── server.js           # Point d'entrée de l'application
 ```
 
 ## ⚙️ Installation et Lancement
