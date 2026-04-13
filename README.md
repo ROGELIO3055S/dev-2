@@ -63,33 +63,20 @@ DB_NAME=iut_requetes_db
 JWT_SECRET=votre_cle_secrete
 ```
 
-##⚙️ Installation et Lancement
-1. Prérequis
-Node.js installé
-
-Serveur MySQL (WAMP, XAMPP ou MySQL Workbench)
-
-2. Configuration
-Créez un fichier .env à la racine du dossier backend et configurez vos accès :
-
-Extrait de code
-PORT=5000
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=votre_mot_de_passe
-DB_NAME=iut_requetes
-JWT_SECRET=votre_cle_secrete
-3. Installation des dépendances
-Bash
+### 3. Installation des dépendances
+```Bash
 npm install
-4. Initialisation de la base de données (Seed)
-Pour tester l'application avec des données de test (10 étudiants, 3 admins, 10 requêtes) :
+```
 
-Bash
+### 4. Initialisation de la base de données (Seed)
+Pour tester l'application avec des données de test (10 étudiants, 3 admins, 10 requêtes) :
+```Bash
 npm run seed
-5. Lancement du serveur
-Bash
+```
+### 5. Lancement du serveur
+```Bash
 npm run dev
+```
 Le serveur sera disponible sur : http://localhost:5000
 
 ## Documentation API
