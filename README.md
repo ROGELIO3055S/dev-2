@@ -45,7 +45,7 @@ Le backend a été conçu avec une architecture robuste pour garantir la sécuri
 └── API.md              # Documentation technique détaillée des routes
 ```
 
-⚙️ Installation et Lancement
+##⚙️ Installation et Lancement
 1. Prérequis
 Node.js installé
 
