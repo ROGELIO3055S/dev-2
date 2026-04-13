@@ -1,63 +1,80 @@
-# IUT-Requetes-Backend
+# IUT Requêtes — Système de Gestion des Requêtes Académiques
 
-Plateforme de gestion des requêtes académiques pour l'IUT de Douala. Ce projet permet aux étudiants de soumettre des demandes (erreurs de noms, changements de notes) et au corps administratif de les traiter efficacement.
+Ce projet est une plateforme web conçue pour l'**IUT de Douala**, permettant aux étudiants de soumettre et de suivre des requêtes académiques (corrections de noms, contestations de notes) de manière numérique.
 
-## 📋 Fonctionnalités (MVP)
-- **Authentification :** Inscription et connexion avec rôles (Étudiant, Enseignant, Admin, Super Admin).
-- **Gestion des Requêtes :** Création, consultation et suivi du statut des requêtes.
-- **Notifications :** Alertes en temps réel sur l'évolution du traitement.
-- **Audit :** Historique des modifications de statuts.
+Cette branche contient l'intégralité du **Backend (DEV1)**.
+
+---
+
+## 🚀 Fonctionnalités implémentées (DEV1)
+
+Le backend a été conçu avec une architecture robuste pour garantir la sécurité et la traçabilité des demandes :
+
+- **Système d'Authentification** : Inscription et connexion sécurisées via JSON Web Tokens (JWT).
+- **Gestion des Rôles** : Contrôle d'accès strict (RBAC) différenciant les Étudiants, Enseignants et Administrateurs.
+- **Soumission de Requêtes** :
+    - Formulaire spécifique pour les **erreurs de nom** (avec justificatifs).
+    - Formulaire spécifique pour les **changements de notes** (matière, notes, motif).
+- **Suivi et Historique** : Consultation du statut des requêtes en temps réel et possibilité d'annulation par l'étudiant.
+- **Validation des données** : Middlewares de validation pour assurer l'intégrité des données avant insertion en base de données (MySQL).
+
+---
 
 ## 🛠️ Stack Technique
-- **Runtime :** Node.js
-- **Framework :** Express.js
-- **Base de données :** MySQL 8.0
-- **Authentification :** JSON Web Token (JWT) & Bcrypt
-- **Versionnage :** Git & GitHub
 
-## 🚀 Installation & Configuration Locale
+- **Runtime** : Node.js
+- **Framework** : Express.js
+- **Base de données** : MySQL
+- **Sécurité** : Bcrypt (hachage des mots de passe) & JWT (authentification)
+- **Outils de dev** : Nodemon, Postman (tests API)
 
-### 1. Prérequis
-- Node.js (v18+)
-- MySQL Server (via XAMPP, WAMP ou installation directe)
+---
 
-### 2. Clonage du projet
+## 📁 Structure du Projet
 
-git clone [https://github.com/Dylane237/iut-requetes-backend.git](https://github.com/Dylane237/iut-requetes-backend.git)
-cd iut-requetes-backend
+```text
+/backend
+├── config/             # Configuration de la base de données
+├── controllers/        # Logique métier (requêtes, auth)
+├── middlewares/        # Sécurité (JWT) et validation (T5)
+├── models/             # Schémas et requêtes SQL
+├── routes/             # Définition des points d'accès API (T4)
+├── utils/              # Fonctions utilitaires
+├── seed.js             # Script de génération de données de test (T6)
+├── server.js           # Point d'entrée de l'application
+└── API.md              # Documentation technique détaillée des routes
+⚙️ Installation et Lancement
+1. Prérequis
+Node.js installé
 
-### 3. Installation des dépendances
-npm install
+Serveur MySQL (WAMP, XAMPP ou MySQL Workbench)
 
-### 4. Configuration de la Base de Données
-Lancez votre serveur MySQL.
-Importez le fichier init_db.sql dans votre client (MySQL Workbench, phpMyAdmin, etc.).
-Créez un fichier .env à la racine et configurez vos accès :
+2. Configuration
+Créez un fichier .env à la racine du dossier backend et configurez vos accès :
 
 Extrait de code
+PORT=5000
 DB_HOST=localhost
 DB_USER=root
-DB_PASS=votre_mot_de_passe
-DB_NAME=iut_requetes_db
+DB_PASSWORD=votre_mot_de_passe
+DB_NAME=iut_requetes
 JWT_SECRET=votre_cle_secrete
-PORT=3000
+3. Installation des dépendances
+Bash
+npm install
+4. Initialisation de la base de données (Seed)
+Pour tester l'application avec des données de test (10 étudiants, 3 admins, 10 requêtes) :
 
-### 5. Lancement
-npm start
+Bash
+npm run seed
+5. Lancement du serveur
+Bash
+npm run dev
+Le serveur sera disponible sur : http://localhost:5000
 
+📖 Documentation API
+Pour le détail technique de chaque route (paramètres, JSON attendus, codes d'erreurs), veuillez vous référer au fichier suivant :
+👉 Consulter API.md
 
-### 📅 Planning de Développement (Phase 1)
-[x] T1 (10/04) : Initialisation du dépôt et structure (Lead Backend)
-
-[x] T2 (10/04) : Conception du schéma SQL (En cours)
-
-[ ] T3 (11/04) : Système d'authentification JWT
-
-[ ] T4 (12/04) : CRUD des requêtes
-
-### 👥 Équipe
-...
-
-10 membres (Développeurs Frontend, Backend, UI/UX)
-
-© 2026 - IUT de Douala - Licence Génie Logiciel
+👨‍💻 Auteurs
+Dylane & Samuel
