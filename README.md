@@ -45,6 +45,24 @@ Le backend a été conçu avec une architecture robuste pour garantir la sécuri
 └── API.md              # Documentation technique détaillée des routes
 ```
 
+## ⚙️ Installation et Lancement
+
+### 1. Prérequis
+* **Node.js** installé sur votre machine.
+* Un serveur **MySQL** (via WAMP, XAMPP ou MySQL Workbench).
+
+### 2. Configuration
+Créez un fichier `.env` à la racine du dossier `backend` et configurez vos accès comme suit :
+
+```env
+PORT=5000
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=votre_mot_de_passe
+DB_NAME=iut_requetes_db
+JWT_SECRET=votre_cle_secrete
+```
+
 ##⚙️ Installation et Lancement
 1. Prérequis
 Node.js installé
