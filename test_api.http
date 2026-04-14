@@ -1,0 +1,20 @@
+### Soumettre une requête de changement de nom
+POST http://localhost:5000/requetes/changement-note
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTksImVtYWlsIjoidGVzdEBpdXQuY20iLCJyb2xlIjoiZXR1ZGlhbnQiLCJpYXQiOjE3NzYwOTM0NTUsImV4cCI6MTc3NjE3OTg1NX0.dYUXJPOzn2FnYLzNuBsMlUY83UC8Ra3grx8eV0HNBfw
+Content-Type: application/json
+
+{
+  "type_requete": "erreur_nom",
+  "titre": "Correction de l'orthographe de mon nom",
+  "description": "Mon nom est écrit 'Kouam' au lieu de 'Kouamo' sur les listes officielles.",
+  "departement_id": 1,
+  "ancien_nom": "Kouamo",
+  "nouveau_nom": "Kouamou",
+  "justificatif_url": "https://janngo.com/uploads/cni.pdf",
+  
+  "matiere": "N/A",
+  "note_actuelle": 0,
+  "note_demandee": 2,
+  "motif": "Correction d'état civil uniquement pour cette requête spécifique.",
+  "enseignant_id": 1
+}

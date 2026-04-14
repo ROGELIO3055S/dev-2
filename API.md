@@ -187,6 +187,96 @@ Base URL : `http://localhost:5000`
 
 ---
 
+### POST /requetes/erreur-nom
+
+**Role requis:** etudiant
+
+**Reponse 200 :**
+
+```json
+{
+  "type_requete": "erreur_nom",
+  "titre": "string",
+  "description": "string",
+  "departement_id": "int",
+  "ancien_nom": "string",
+  "nouveau_nom": "string",
+  "justificatif_url": "string"
+}
+```
+
+---
+
+### PUT /admin/requetes/:id/approuver
+
+**Rôle requis :** Admin/Enseignant
+
+**Réponse 200 :**
+
+```json
+{
+  "message": "Requête approuver avec succès."
+}
+```
+
+---
+
+### PUT /admin/requetes/:id/rejeter
+
+**Rôle requis :** Admin/Enseignant
+
+**Réponse 200 :**
+
+```json
+{
+  "commentaire": "Justificatif illisible",
+  "message": "Requête rejetée avec succès."
+}
+```
+
+---
+
+### adminControlleur
+
+**Rôle requis :** Admin
+
+**Réponse 200 :**
+
+```json
+{
+  "total": "int",
+  "en_attente": "int",
+  "approuvees": "int",
+  "rejetees": "int"
+}
+```
+
+---
+
+---
+
+### adminRoutes
+
+**Rôle requis :** Admin
+
+**Réponse 200 :**
+
+```json
+[
+  {
+    "id": "int",
+    "type_requete": "string",
+    "titre": "string",
+    "statut_actuel": "string",
+    "nom": "string",
+    "prenom": "string",
+    "created_at": "datetime"
+  }
+]
+```
+
+---
+
 ## Codes d'erreur
 
 | Code | Signification         |

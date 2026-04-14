@@ -20,6 +20,12 @@ const creerRequete = async (req, res) => {
         // Insérer les détails selon le type
         if (type_requete === 'erreur_nom') {
             const { ancien_nom, nouveau_nom, justificatif_url } = req.body;
+
+                    // Validation manuelle si le middleware ne le fait pas déjà
+            if (!ancien_nom || !nouveau_nom || !justificatif_url) {
+                return res.status(400).json({ message: "Les informations d'état civil et le justificatif sont obligatoires." });
+            }
+            
             await db.query(
                 `INSERT INTO details_erreur_nom (requete_id, ancien_nom, nouveau_nom, justificatif_url) 
                  VALUES (?, ?, ?, ?)`,
@@ -29,6 +35,12 @@ const creerRequete = async (req, res) => {
 
         if (type_requete === 'changement_note') {
             const { matiere, note_actuelle, note_demandee, motif, enseignant_id } = req.body;
+
+                    // Validation manuelle si le middleware ne le fait pas déjà
+            if (!matiere || !note_actuelle || !note_demandee || !motif || !enseignant_id) {
+                return res.status(400).json({ message: "Toutes les informations pour le changement de note sont obligatoires." });
+            }
+
             await db.query(
                 `INSERT INTO details_changement_note 
                  (requete_id, matiere, note_actuelle, note_demandee, motif, enseignant_id) 
@@ -152,4 +164,50 @@ const annulerRequete = async (req, res) => {
     }
 };
 
-module.exports = { creerRequete, getRequeteById, getRequetesEtudiant, annulerRequete };
+const approuverRequete = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const admin_id = req.user.id; 
+        await db.query('UPDATE requetes SET statut_actuel = ? WHERE id = ?', ['approuvee', id]);
+
+        await db.query(
+            `INSERT INTO historique_statut (requete_id, ancien_statut, nouveau_statut, commentaire_admin, modifie_par) 
+             VALUES (?, ?, ?, ?, ?)`,
+            [id, 'en_attente', 'approuvee', 'Approuvée par l\'administration', admin_id]
+        );
+const [requete] = await db.query('SELECT etudiant_id FROM requetes WHERE id = ?', [id]);
+
+await db.query(
+    `INSERT INTO notifications (user_id, requete_id, message) VALUES (?, ?, ?)`,
+    [requete[0].etudiant_id, id, `Votre requête a été traitée. Nouveau statut : Approuvée.`]
+);
+
+        res.status(200).json({ message: 'Requête approuvée.' });
+    } catch (error) {
+        res.status(500).json({ message: 'Erreur serveur.' });
+    }
+};
+
+const rejeterRequete = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const admin_id = req.user.id; 
+        await db.query('UPDATE requetes SET statut_actuel = ? WHERE id = ?', ['rejetee', id]);
+
+        await db.query(
+            `INSERT INTO historique_statut (requete_id, ancien_statut, nouveau_statut, commentaire_admin, modifie_par) 
+             VALUES (?, ?, ?, ?, ?)`,
+            [id, 'en_attente', 'rejetee', 'Rejetée par l\'administration', admin_id]
+        );
+
+    await db.query(
+    `INSERT INTO notifications (user_id, requete_id, message) VALUES (?, ?, ?)`,
+    [requete[0].etudiant_id, id, `Votre requête a été traitée. Nouveau statut : Rejetée.`]
+);
+        res.status(200).json({ message: 'Requête rejetée.' });
+    } catch (error) {
+        res.status(500).json({ message: 'Erreur serveur.' });
+    }
+};
+
+module.exports = { creerRequete, getRequeteById, getRequetesEtudiant, annulerRequete, approuverRequete, rejeterRequete };

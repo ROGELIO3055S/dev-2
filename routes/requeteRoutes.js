@@ -4,7 +4,9 @@ const {
     creerRequete, 
     getRequeteById, 
     getRequetesEtudiant, 
-    annulerRequete 
+    annulerRequete,
+    approuverRequete,
+    rejeterRequete
 } = require('../controllers/requeteController');
 const { verifierToken, verifierRole } = require('../middlewares/authMiddleware');
 const { validerErreurNom, validerChangementNote } = require('../middlewares/validationMiddleware');
@@ -23,5 +25,11 @@ router.get('/etudiant/:id', verifierToken, getRequetesEtudiant);
 
 // PUT /requetes/:id/annuler — Annuler une requête
 router.put('/:id/annuler', verifierToken, verifierRole('etudiant'), annulerRequete);
+
+// PUT /requetes/:id/approuver — Approuver une requête
+router.put('/:id/approuver', verifierToken, verifierRole('admin'), approuverRequete);
+
+// PUT /requetes/:id/rejeter — Rejeter une requête
+router.put('/:id/rejeter', verifierToken, verifierRole('admin'), rejeterRequete);
 
 module.exports = router;

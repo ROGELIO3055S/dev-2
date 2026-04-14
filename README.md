@@ -58,7 +58,7 @@ Le backend a été conçu avec une architecture robuste pour garantir la sécuri
 ### 2. Configuration
 Créez un fichier `.env` à la racine du dossier `backend` et configurez vos accès comme suit :
 
-```env
+```env(ici elle est deja cree)
 PORT=5000
 DB_HOST=localhost
 DB_USER=root

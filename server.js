@@ -4,6 +4,7 @@ require('dotenv').config();
 
 const authRoutes = require('./routes/authRoutes');
 const requeteRoutes = require('./routes/requeteRoutes');
+const adminRoutes = require('./routes/adminRoutes');
 
 const app = express();
 
@@ -13,13 +14,13 @@ app.use(express.json());
 // Routes
 app.use('/auth', authRoutes);
 app.use('/requetes', requeteRoutes);
-
+app.use('/admin', adminRoutes);
 // Route de test
 app.get('/', (req, res) => {
     res.json({ message: 'IUT Requêtes API — Online' });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Serveur démarré sur le port ${PORT}`);
 });
