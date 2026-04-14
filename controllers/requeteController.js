@@ -192,6 +192,8 @@ const rejeterRequete = async (req, res) => {
     try {
         const { id } = req.params;
         const admin_id = req.user.id; 
+        const [requete] = await db.query('SELECT etudiant_id FROM requetes WHERE id = ?', [id]);
+
         await db.query('UPDATE requetes SET statut_actuel = ? WHERE id = ?', ['rejetee', id]);
 
         await db.query(
